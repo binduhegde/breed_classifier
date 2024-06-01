@@ -57,11 +57,11 @@ def predict_breed(image):
     return prediction
 
 
-
 if uploaded_file is not None:
     # Display the uploaded image
     image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded Image', use_column_width=False, width=100)
+    st.image(image, caption='Uploaded Image',
+             use_column_width=False, width=400)
 
     # Predict the breed
     prediction = predict_breed(image)
