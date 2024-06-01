@@ -1,7 +1,4 @@
 import streamlit as st
-import os
-import pickle
-import numpy as np
 from PIL import Image
 from predict_breed import predict
 
@@ -55,8 +52,6 @@ uploaded_file = st.file_uploader(
 
 # Function to make predictions
 def predict_breed(image):
-    # Preprocess the image
-    # image = preprocess_image(image)
     # Make predictions using the model
     prediction = predict(image)
     return prediction
@@ -66,7 +61,7 @@ def predict_breed(image):
 if uploaded_file is not None:
     # Display the uploaded image
     image = Image.open(uploaded_file)
-    #st.image(image, caption='Uploaded Image', use_column_width=True, width=100)
+    st.image(image, caption='Uploaded Image', use_column_width=True, width=100)
 
     # Predict the breed
     prediction = predict_breed(image)
