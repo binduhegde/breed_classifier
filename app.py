@@ -53,23 +53,6 @@ uploaded_file = st.file_uploader(
     "Upload your pet's image here", type=['png', 'jpg', 'jpeg'])
 
 
-# # Load the pre-trained model
-# model_path = "pet_breed_model.pkl"
-# with open(model_path, 'rb') as file:
-#     model = pickle.load(file)
-
-
-# Function to preprocess the image
-def preprocess_image(image):
-    # Resize the image to match the input size of the model
-    image = image.resize((224, 224))
-    # Convert the image to numpy array and normalize the pixel values
-    image = np.array(image) / 255.0
-    # Expand the dimensions to match the input shape expected by the model
-    image = np.expand_dims(image, axis=0)
-    return image
-
-
 # Function to make predictions
 def predict_breed(image):
     # Preprocess the image
@@ -78,46 +61,15 @@ def predict_breed(image):
     prediction = predict(image)
     return prediction
 
-# Function to generate HTML string for displaying image and prediction
-
-
-def generate_html(image, prediction):
-    html_content = f"""
-    <div style="display: flex; align-items: center;">
-        <div style="flex: 1; margin-right: 20px;">
-            <img src="data:image/jpeg;base64,{image}" style="max-width: 100%;">
-        </div>
-        <div style="flex: 1;">
-            <h2>Prediction: {prediction}</h2>
-        </div>
-    </div>
-    """
-    return html_content
-
-
-# Function to convert image to base64 string
-def ImageToBase64(image):
-    from PIL import Image
-    import base64
-    import io
-    # Convert PIL image to byte array
-    img_byte_array = io.BytesIO()
-    image.save(img_byte_array, format=image.format)
-    # Encode byte array to base64 string
-    img_base64 = base64.b64encode(img_byte_array.getvalue()).decode('utf-8')
-    return img_base64
 
 
 if uploaded_file is not None:
     # Display the uploaded image
     image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded Image', use_column_width=True, width=100)
+    #st.image(image, caption='Uploaded Image', use_column_width=True, width=100)
 
     # Predict the breed
     prediction = predict_breed(image)
 
     # Custom CSS for layout
-
-    image_base64 = ImageToBase64(image)
-    html_content = generate_html(image_base64, prediction)
-    st.write(html_content, unsafe_allow_html=True)
+    st.write(prediction)
