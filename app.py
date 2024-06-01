@@ -9,40 +9,6 @@ from predict_breed import predict
 image_url = "https://t3.ftcdn.net/jpg/06/71/53/70/360_F_671537078_UOjhRBtGStc0Jhn95JcqkroycvYgugJW.jpg"
 
 
-# # Custom CSS to set the background image with a gradient overlay
-# page_bg_img = f"""
-# <style>
-#   .container {{
-#       position: relative;
-#       width: 100%;
-#       height: 30vh;
-#       display: flex;
-#       justify-content: flex-end;
-#       align-items: flex-start;
-#       background: linear-gradient(to right, #EFD595 50%, transparent 70%);
-#   }}
-#   .image {{
-#       position: relative;
-#       height: 30vh;
-#       width: auto;
-#       mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 50%);
-#       -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 50%);
-#       z-index: 2;
-#   }}
-# </style>
-# <div class="container">
-#     <img src="{image_url}" class="image">
-# </div>
-# """
-
-# # Inject the custom CSS and HTML into the Streamlit app
-# st.markdown(page_bg_img, unsafe_allow_html=True)
-
-# # Rest of your Streamlit app
-# st.title("Streamlit App with Custom Background")
-# st.write("This is an example of how to set a custom background with an image and gradient in a Streamlit app.")
-
-
 # Custom CSS to set the background image with a gradient overlay and title
 page_bg_img = f"""
 <style>
