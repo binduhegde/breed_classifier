@@ -82,10 +82,10 @@ def predict_breed(image):
 if uploaded_file is not None:
     # Display the uploaded image
     image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded Image', use_column_width=True)
+    st.image(image, caption='Uploaded Image', use_column_width=True, width=100)
 
     # Predict the breed
     prediction = predict_breed(image)
 
     # Display the predicted breed
-    st.write("Prediction:", prediction)
+    st.write(prediction)
