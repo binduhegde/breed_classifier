@@ -79,6 +79,8 @@ def predict_breed(image):
     return prediction
 
 # Function to generate HTML string for displaying image and prediction
+
+
 def generate_html(image, prediction):
     html_content = f"""
     <div style="display: flex; align-items: center;">
@@ -92,6 +94,20 @@ def generate_html(image, prediction):
     """
     return html_content
 
+
+# Function to convert image to base64 string
+def ImageToBase64(image):
+    from PIL import Image
+    import base64
+    import io
+    # Convert PIL image to byte array
+    img_byte_array = io.BytesIO()
+    image.save(img_byte_array, format=image.format)
+    # Encode byte array to base64 string
+    img_base64 = base64.b64encode(img_byte_array.getvalue()).decode('utf-8')
+    return img_base64
+
+
 if uploaded_file is not None:
     # Display the uploaded image
     image = Image.open(uploaded_file)
@@ -101,5 +117,7 @@ if uploaded_file is not None:
     prediction = predict_breed(image)
 
     # Custom CSS for layout
-    html_content = generate_html(image, prediction)
+
+    image_base64 = ImageToBase64(image)
+    html_content = generate_html(image_base64, prediction)
     st.write(html_content, unsafe_allow_html=True)
