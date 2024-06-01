@@ -107,7 +107,7 @@ def preprocess_image(image):
 # Function to make predictions
 def predict_breed(image):
     # Preprocess the image
-    image = preprocess_image(image)
+    # image = preprocess_image(image)
     # Make predictions using the model
     prediction = predict(image)
     return prediction
