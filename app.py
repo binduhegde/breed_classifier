@@ -78,6 +78,19 @@ def predict_breed(image):
     prediction = predict(image)
     return prediction
 
+# Function to generate HTML string for displaying image and prediction
+def generate_html(image, prediction):
+    html_content = f"""
+    <div style="display: flex; align-items: center;">
+        <div style="flex: 1; margin-right: 20px;">
+            <img src="data:image/jpeg;base64,{image}" style="max-width: 100%;">
+        </div>
+        <div style="flex: 1;">
+            <h2>Prediction: {prediction}</h2>
+        </div>
+    </div>
+    """
+    return html_content
 
 if uploaded_file is not None:
     # Display the uploaded image
@@ -88,34 +101,5 @@ if uploaded_file is not None:
     prediction = predict_breed(image)
 
     # Custom CSS for layout
-    custom_css = f"""
-    <style>
-        .image-prediction-container {{
-            display: flex;
-            align-items: center;
-        }}
-        .image-prediction-container .image-container {{
-            flex: 1;
-            margin-right: 20px;
-        }}
-        .image-prediction-container .prediction-container {{
-            flex: 1;
-        }}
-    </style>
-    """
-
-    # Inject custom CSS
-    st.markdown(custom_css, unsafe_allow_html=True)
-
-    # Display the uploaded image and prediction side by side
-    st.write("<div class='image-prediction-container'>", unsafe_allow_html=True)
-    st.write("<div class='image-container'>")
-    st.image(image, caption='Uploaded Image', use_column_width=True)
-    st.write("</div>")
-    st.write("<div class='prediction-container'>")
-    st.write("Prediction:", prediction)
-    st.write("</div>")
-    st.write("</div>", unsafe_allow_html=True)
-
-    # Display the predicted breed
-    st.write(prediction)
+    html_content = generate_html(image, prediction)
+    st.write(html_content, unsafe_allow_html=True)
