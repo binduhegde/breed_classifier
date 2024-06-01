@@ -3,6 +3,7 @@ import os
 import pickle
 import numpy as np
 from PIL import Image
+from predict_breed import predict
 
 # Direct URL to the image hosted online
 image_url = "https://t3.ftcdn.net/jpg/06/71/53/70/360_F_671537078_UOjhRBtGStc0Jhn95JcqkroycvYgugJW.jpg"
@@ -48,7 +49,7 @@ page_bg_img = f"""
   .container {{
       position: relative;
       width: 100%;
-      height: 40vh;
+      height: 30vh;
       display: flex;
       justify-content: flex-end;
       align-items: flex-start;
@@ -56,7 +57,7 @@ page_bg_img = f"""
   }}
   .image {{
       position: relative;
-      height: 40vh;
+      height: 30vh;
       width: auto;
       mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 50%);
       -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 50%);
@@ -86,10 +87,10 @@ uploaded_file = st.file_uploader(
     "Upload your pet's image here", type=['png', 'jpg', 'jpeg'])
 
 
-# Load the pre-trained model
-model_path = "pet_breed_model.pkl"
-with open(model_path, 'rb') as file:
-    model = pickle.load(file)
+# # Load the pre-trained model
+# model_path = "pet_breed_model.pkl"
+# with open(model_path, 'rb') as file:
+#     model = pickle.load(file)
 
 
 # Function to preprocess the image
@@ -108,7 +109,7 @@ def predict_breed(image):
     # Preprocess the image
     image = preprocess_image(image)
     # Make predictions using the model
-    prediction = model.predict(image)
+    prediction = predict(image)
     return prediction
 
 
