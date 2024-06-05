@@ -69,6 +69,10 @@ if uploaded_file is not None:
         image = Image.open(uploaded_file)
         st.image(image, caption='Uploaded Image',
                  use_column_width=False, width=300)
+        # Add a button below the prediction display
+        if st.button('Upload to Gallery'):
+            # Handle the button click event
+            st.write("Image uploaded to gallery!")  # Placeholder for actual upload functionality
 
     with col2:
         # Predict the breed
@@ -83,9 +87,5 @@ if uploaded_file is not None:
             """, unsafe_allow_html=True
         )
         
-        # Add a button below the prediction display
-        if st.button('Upload to Gallery'):
-            # Handle the button click event
-            st.write("Image uploaded to gallery!")  # Placeholder for actual upload functionality
 
 
