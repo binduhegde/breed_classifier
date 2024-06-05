@@ -56,7 +56,7 @@ def predict_breed(image):
     result = predict(image)
     prediction = result[0]
     prediction_prob = (result[1]) * 100
-    breed_name = ' '.join(str(prediction).split('_')).title()
+    breed_name = prediction.replace('_', ' ').title()
     return breed_name, prediction_prob
 
 
