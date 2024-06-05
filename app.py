@@ -56,7 +56,8 @@ def predict_breed(image):
     result = predict(image)
     prediction = result[0]
     prediction_prob = (result[1]) * 100
-    return prediction, prediction_prob
+    breed_name = ' '.join(str(prediction).split('_')).title()
+    return breed_name, prediction_prob
 
 
 if uploaded_file is not None:
@@ -87,6 +88,6 @@ if uploaded_file is not None:
             f"""
             <div style='text-align: center; margin-top:10px'>
                 <h2>{prediction}</h2>
-                <p style='color: blue; font-size: 18px;'>{prediction_prob:.2f}% confident</p>
+                <p style='color: blue; font-size: 18px;'>{prediction_prob:.0f}% confident</p>
             </div>
             """, unsafe_allow_html=True)
