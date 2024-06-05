@@ -61,16 +61,6 @@ def predict_breed(image):
 
 
 if uploaded_file is not None:
-    # # Display the uploaded image
-    # image = Image.open(uploaded_file)
-    # st.image(image, caption='Uploaded Image',
-    #          use_column_width=False, width=400)
-
-    # # Predict the breed
-    # prediction = predict_breed(image)
-
-    # # Custom CSS for layout
-    # st.write(prediction)
     # Create two columns
     col1, col2 = st.columns([1, 1])
 
@@ -91,3 +81,4 @@ if uploaded_file is not None:
                 <p style='color: blue; font-size: 18px;'>{prediction_prob:.0f}% confident</p>
             </div>
             """, unsafe_allow_html=True)
+        upload_gallary_button = st.button('Upload to Gallary')
