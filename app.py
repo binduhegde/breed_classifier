@@ -58,13 +58,28 @@ def predict_breed(image):
 
 
 if uploaded_file is not None:
-    # Display the uploaded image
-    image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded Image',
-             use_column_width=False, width=400)
+    # # Display the uploaded image
+    # image = Image.open(uploaded_file)
+    # st.image(image, caption='Uploaded Image',
+    #          use_column_width=False, width=400)
 
-    # Predict the breed
-    prediction = predict_breed(image)
+    # # Predict the breed
+    # prediction = predict_breed(image)
 
-    # Custom CSS for layout
-    st.write(prediction)
+    # # Custom CSS for layout
+    # st.write(prediction)
+    # Create two columns
+    col1, col2 = st.columns([1, 1])
+
+    with col1:
+        # Display the uploaded image
+        image = Image.open(uploaded_file)
+        st.image(image, caption='Uploaded Image',
+                 use_column_width=False, width=400)
+
+    with col2:
+        # Predict the breed
+        prediction = predict_breed(image)
+        # Display the prediction with larger font size
+        st.markdown(
+            f"<h2 style='text-align: center;'>{prediction}</h2>", unsafe_allow_html=True)
