@@ -84,8 +84,20 @@ if uploaded_file is not None:
         )
         
 
-if st.button('Upload to Gallery'):
-    # Handle the button click event
-    st.write("Image uploaded to gallery!")  # Placeholder for actual upload functionality
+    # Add three buttons below the columns
+    st.markdown("<hr>", unsafe_allow_html=True)  # Add a horizontal line for separation
 
+    col1, col2, col3 = st.columns(3)
 
+    with col1:
+        if st.button("Prediction is wrong"):
+            st.write("You clicked: Prediction is wrong")
+
+    with col2:
+        if st.button("Upload to Gallery"):
+            st.write("You clicked: Upload to Gallery")
+
+    with col3:
+        if st.button("Open Gallery"):
+            st.write("You clicked: Open Gallery")
+Explanation:
