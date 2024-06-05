@@ -55,7 +55,8 @@ def predict_breed(image):
     # Make predictions using the model
     result = predict(image)
     prediction = result[0]
-    prediction_prob = result[1]
+    prediction = ' '.join(prediction.split('_')).title()
+    prediction_prob = (result[1]) * 100
     return prediction, prediction_prob
 
 
@@ -85,8 +86,8 @@ if uploaded_file is not None:
         # Display the prediction with larger font size
         st.markdown(
             f"""
-            <div style='text-align: center;'>
+            <div style='text-align: center; margin-top:10px'>
                 <h2>{prediction}</h2>
-                <p style='color: blue; font-size: 18px;'>Probability: {prediction_prob:.2f}</p>
+                <p style='color: blue; font-size: 18px;'>{prediction_prob:.2f}% confident</p>
             </div>
             """, unsafe_allow_html=True)
