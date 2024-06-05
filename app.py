@@ -80,5 +80,12 @@ if uploaded_file is not None:
                 <h2>{prediction}</h2>
                 <p style='color: blue; font-size: 18px;'>{prediction_prob:.0f}% confident</p>
             </div>
-            """, unsafe_allow_html=True)
-        upload_gallary_button = st.button('Upload to Gallary')
+            """, unsafe_allow_html=True
+        )
+        
+        # Add a button below the prediction display
+        if st.button('Upload to Gallery'):
+            # Handle the button click event
+            st.write("Image uploaded to gallery!")  # Placeholder for actual upload functionality
+
+
