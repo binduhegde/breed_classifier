@@ -53,8 +53,10 @@ uploaded_file = st.file_uploader(
 # Function to make predictions
 def predict_breed(image):
     # Make predictions using the model
-    prediction = predict(image)
-    return prediction
+    result = predict(image)
+    prediction = result[0]
+    prediction_prob = result[1]
+    return result
 
 
 if uploaded_file is not None:
