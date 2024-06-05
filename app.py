@@ -100,4 +100,3 @@ if uploaded_file is not None:
     with col3:
         if st.button("Open Gallery"):
             st.write("You clicked: Open Gallery")
-Explanation:
