@@ -55,7 +55,6 @@ def predict_breed(image):
     # Make predictions using the model
     result = predict(image)
     prediction = result[0]
-    prediction = ' '.join(prediction.split('_')).title()
     prediction_prob = (result[1]) * 100
     return prediction, prediction_prob
 
